@@ -157,6 +157,16 @@ pre div.my-editor-style .cssunitcolor {
     }
 }
 
+@font-face {
+    font-family: consolas;
+    src: url(./consolas.ttf);
+}
+
+@font-face {
+    font-family: operator;
+    src: url(./operatormono.otf);
+}
+
 .my-editor-style {
     width: 100%;
     height: fit-content;
@@ -171,8 +181,8 @@ pre div.my-editor-style .cssunitcolor {
 
     box-sizing: border-box;
 
-    font-size: 20px;
-    font-family: 'Operator Mono Book', 'consolas';
+    font-size: 18px;
+    font-family: operator, consolas;
     font-weight: normal;
     line-height: 30px;
 
