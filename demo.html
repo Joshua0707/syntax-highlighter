@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dist/syntax-highlight.css">
+</head>
+<body>
+    <div id="page">
+        <header>
+            <h1>My Simple Syntax Highlighter Plugin</h1>
+        </header>
+        <div class="line-br""></div>
+        
+        <h2>Display your code a fancy way!</h2>
+
+        <div class="code-plate">
+            <pre><div data-filename="index.html" data-editable="true" data-showLabel="true">
+&lt;html&gt;
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+        </div></pre>
+    </div>
+        <div class="code-plate">
+            <pre><div data-filename="index.js" data-editable="true" data-showLabel="true">
+const score = 10;
+/* block comment */
+const arr = ["one", "two", "three"];
+function myFunc() {
+    console.log("name");
+    // window
+    this.window.toString();
+    isBad = false;
+}
+        </div></pre>
+    </div>
+
+    <div class="code-plate">
+        <pre><div data-filename="style.css" data-showLabel="true" data-editable="true">
+/* style */
+main.page#fullpage {
+  position: relative;
+}
+
+div {
+  margin: auto;
+  height: 100vh;
+}
+        </div></pre>
+    </div>
+
+        <div class="code-plate">
+            <pre><div data-filename="main.py" data-editable="true" data-showLabel="true">
+def greet(name):
+   '''
+     Get the greet the person with the name given
+   '''
+  print('Hello' + name + " !")
+
+score = 10
+print(greet(name))
+            </div></pre>
+        </div>
+
+    </div>
+</body>
+<script src="dist/syntax-highlight.js"></script>
+<script>
+    const highlighter = new Highlighter({
+        className: "",
+        maxHeight: 400,
+        // theme: 'light'
+    });
+    highlighter.highlight();
+</script>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Highlighter</title>
+    <link rel="stylesheet" href="./dist/syntax-highlight.css">
+    <style>
+        @font-face {
+            font-family: opens;
+            src: url(./opens.ttf);
+        }
+        @keyframes fadeAndScale {
+            from {
+                opacity: 0;
+                transform: scale(.9, .9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1, 1);
+            }
+        }
+        h2, h2 + div {
+            font-family: opens;
+            text-align: center;
+        }
+        h2 {
+            padding: 0px 10px;
+            margin-bottom: 10px;
+            font-size: 36px;
+            text-transform: capitalize;
+            color: #323341;
+            transform-origin: 50% 100%;
+            animation-duration: .3s;
+            animation-name: fadeAndScale;
+            animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+        }
+        h2 + div {
+            margin: auto;
+            margin-top: 1px;
+            font-weight: normal;
+            width: fit-content;
+            max-width: calc(100% - 10px);
+            padding: 10px 18px;
+            border-left: thick solid #6d79e4;
+            background-color: #f4f5fc;
+        }
+        h2 + div small {
+            display: block;
+            text-align: left;
+            color: coral;
+        }
+        header {
+            width: 400px;
+            max-width: calc(100% - 20px);
+            margin: auto;
+            outline: none;
+            margin-top: 20px;
+
+            display: flex;
+            align-items: center;
+        }
+        input {
+            padding: 10px 7px;
+            border: none;
+            border-bottom: 1px solid #323341;
+            font-family: opens;
+            outline: none;
+            font-size: 18px;
+        }
+
+        input[type=text] {
+            flex: 1;
+        }
+
+        input::placeholder {
+            color: #a6a6bd;
+        }
+        #code-plate {
+            width: 550px;
+            max-width: calc(100% - 10px);
+            margin: auto;
+        }
+        .switch {
+            background-color: #898989;
+            width: 48px;
+            height: 25px;
+            border-radius: 50px;
+            position: relative;
+            overflow: visible;
+        }
+        .switch input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .switch span {
+            position: absolute;
+            background-color: white;
+            border-radius: 15px;
+            width: 24px;
+            height: 24px;
+            top: calc(50% - 12px);
+            transition: all .3s ease;
+        }
+
+        .switch.on {
+            background-color: #323341;
+        }
+
+        .switch input:checked ~ span {
+            transform: translateX(calc(100% - 1px));
+        }
+    </style>
+</head>
+<body>
+    <h2>Hello! Test Out My Syntax Highlighter</h2>
+    <div>css and js languages supported<small>development stage</small></div>
+    <datalist id="language">
+        <option value="javascript"></option>
+        <option value="css"></option>
+    </datalist>
+    <header>
+        <input list="language" value="javascript" placeholder="language" name="language" id="code-lang" type="text" />
+        <div class="switch">
+            <input type="checkbox" id="themeChk" checked="true" />
+            <span></span>
+        </div>
+    </header>
+    <div id="code-plate">
+        <pre>
+            <div class="codeeditor" data-animate="true" data-editable="true" data-filename="index.js">
+/* It's editable */
+greet("John", 2);
+
+function greet(name, numberOfTimes=1) {
+  for (let i = 0; i <= numberOfTimes; i++) {
+    console.log("Hello! " + name);
+  }
+}
+
+// continue your code
+            </div>
+        </pre>
+    </div>
+    <script src="./dist/syntax-highlight.js"></script>
+    <script>
+        const hl = new Highlighter({
+            className: "codeeditor",
+            theme: "dark",
+            maxHeight: null
+        });
+        hl.highlight();
+        const codeeditor = document.querySelector('pre div.codeeditor');
+        const input = document.querySelector('input[type="text"]');
+        const chkbx = document.querySelector('input[type="checkbox"');
+        const switchBx = document.querySelector(".switch");
+        input.addEventListener("input", (e) => {
+            console.log(e.target.value)
+            let v = e.target.value.toLowerCase().trim();
+            console.log(v)
+            if (v === "javascript" || v === "js")
+                codeeditor.setAttribute("data-filename", "index.js")
+            else if (v === "css")
+                codeeditor.setAttribute("data-filename", "index.css")
+            else
+            codeeditor.setAttribute("data-filename", "index.txt")
+            hl.highlightOne(codeeditor)
+        });
+        chkbx.addEventListener("input", (e) => {
+            if (chkbx.checked) {
+                hl.setTheme("dark")
+                switchBx.classList.add("on")
+            } else {
+                hl.setTheme("light")
+                switchBx.classList.remove("on")
+            }
+        })
+
+        window.addEventListener("DOMContentLoaded", () => {
+            if (chkbx.checked) {
+                hl.setTheme("dark")
+                switchBx.classList.add("on")
+            } else {
+                hl.setTheme("light")
+                switchBx.classList.remove("on")
+            }
+        }, false);
+
+        
+    </script>
+</body>
+</html>

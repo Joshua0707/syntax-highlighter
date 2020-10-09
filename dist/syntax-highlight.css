@@ -1,0 +1,219 @@
+
+
+:root {
+    /* code color */
+    --dark-editor: #323341;
+    --dark-corresp-text: white;
+    --light-editor: #f3f3fd;
+}
+
+/* general */
+pre div.my-editor-style .num {
+    color: #deb887;
+}
+
+pre div.my-editor-style .bool {
+    color: #ff9a47;
+}
+
+pre div.my-editor-style .string {
+    color: #A1E46D;
+}
+
+pre div.my-editor-style.light .string {
+    color: #27b40b;
+}
+
+pre div.my-editor-style .jskeywordcolor {
+    color: #8592ff;
+}
+
+pre div.my-editor-style .jspropertycolor {
+    color: #E46D8A;
+}
+
+pre div.my-editor-style .jsfunctioncolor {
+    color: #42aaff;
+}
+
+
+pre div.my-editor-style .special-operator {
+    color: #aad9ff;
+}
+
+pre div.my-editor-style.light .special-operator {
+    color: #42aaff;
+}
+
+pre div.my-editor-style .special-reg {
+    color: #D6665D;
+}
+
+pre div.my-editor-style .special-var {
+    color: #be5dd6;
+}
+
+pre div.my-editor-style .special-js-glob {
+    color: #6d79e4;
+    font-weight: 900 !important;
+}
+
+pre div.my-editor-style.light .special-js-glob {
+    color: #6d79e4;
+}
+
+pre div.my-editor-style .special-js {
+    color: #6DE4D1;
+}
+
+pre div.my-editor-style .special-comment,
+pre div.my-editor-style .special-comment * {
+    color: rgba(255, 255, 255, 0.264) !important;
+    font-weight: normal !important;
+    font-style: italic !important;
+}
+
+pre div.my-editor-style.light .special-comment,
+pre div.my-editor-style.light .special-comment * {
+    color: rgba(0, 0, 0, 0.264) !important;
+}
+
+pre div.my-editor-style .special-js-method {
+    color: #E46D8A;
+}
+
+pre div.my-editor-style .special-html {
+    color: #E4D95F;
+}
+
+pre div.my-editor-style .special-sql {
+    color: #1D968C;
+}
+
+pre div.my-editor-style .special-php {
+    color: #597EA7;
+}
+
+pre.my-editor-style-parent {
+    position: relative;
+}
+
+pre div.my-editor-style .cssselectorcolor {
+    color: #ff7f50;
+}
+
+pre div.my-editor-style .cssdelimitercolor {
+    color: #8592ff;
+}
+
+pre div.my-editor-style .csspropertycolor {
+    color: #bbc0f5;
+}
+
+pre div.my-editor-style.light .csspropertycolor {
+    color: #4750a1;
+}
+
+pre div.my-editor-style .csspropertyvaluecolor {
+    color: #dbdbdb;
+}
+
+pre div.my-editor-style.light .csspropertyvaluecolor {
+    color: #5a5a5a;
+}
+
+pre div.my-editor-style .cssproperycharcolor {
+    color: #597EA7;
+}
+
+pre div.my-editor-style .cssclassnamecolor {
+    color: gold;
+}
+
+pre div.my-editor-style .cssidnamecolor {
+    color: #42aaff;
+}
+
+pre div.my-editor-style .csspseudoelemcolor {
+    color: #42aaff;
+}
+
+pre div.my-editor-style .csspseudoclasscolor {
+    color: #be5dd6;
+}
+
+pre div.my-editor-style .cssunitcolor {
+    color: darksalmon;
+}
+
+@keyframes fadeAndScale {
+    from {
+        opacity: 0;
+        transform: scale(.9, .9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+.my-editor-style {
+    width: 100%;
+    height: fit-content;
+    overflow-x: auto;
+
+    background-color: var(--dark-editor);
+    border-radius: .45rem;
+    color: white;
+
+    outline: none;
+    padding: .75rem 1.5rem;
+
+    box-sizing: border-box;
+
+    font-size: 20px;
+    font-family: 'Operator Mono Book', 'consolas';
+    font-weight: normal;
+    line-height: 30px;
+
+    caret-color: white;
+    /* -webkit-overflow-scrolling: touch; */
+
+    position: relative;
+
+    transition: display ease-in-out .3s;
+}
+
+.my-editor-style.animateIn {
+    transform-origin: 50% 100%;
+    animation-duration: .3s;
+    animation-name: fadeAndScale;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+
+.my-editor-style::selection,
+.my-editor-style *::selection {
+    background-color: #999999;
+}
+
+.my-editor-style.light {
+    background-color: var(--light-editor);
+    color: black;
+    caret-color: black;
+}
+
+.my-editor-style.light::selection,
+.my-editor-style.light *::selection {
+    background-color: #eee;
+}
+
+.my-editor-style + label {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    color: white;
+}
+
+.my-editor-style.light + label {
+    color: black;
+}
